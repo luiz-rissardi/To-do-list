@@ -1,0 +1,16 @@
+<div class="task w-100 d-flex justify-content-between">
+    <div>
+        <h5> {{ this.Task.titulo }} </h5>
+        <h6 class="text-muted">{{ this.Task.descricao }}</h6>
+        <span class="align-center"> expira em : {{ this.Task.duracao | date:"dd/MM/YYYY / hh:mm" }} </span>
+    </div>
+    <div>
+        <button class="btn" (click)="RemoveTask(this.Task)">
+            <span>
+                <img src="../../../assets/images/delete_FILL0_wght400_GRAD0_opsz48.png" alt="delete task">
+            </span>
+        </button>
+        <br>
+        <span class="prioridade-icon"> {{ this.Task.prioridade }} </span>
+    </div>
+</div>

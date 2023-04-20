@@ -1,0 +1,66 @@
+<section class="d-flex" style="height: 60vh; margin-bottom: 80px;">
+    <div class="task-card m-auto"*ngIf="this.TaskList !== undefined && this.TaskList?.titulo !== '' ">
+        <div class="task-header">
+            <div>
+                <h1> {{ this.TaskList.titulo }} </h1>
+                <span class="text-muted"> {{this.TaskList.descricao}} </span>
+            </div>
+            <div class="task-header-add">
+                <button class="btn opacity-25" (click)="openModal(content)">
+                    <span>
+                        <img src="../../../assets/images/add_FILL0_wght400_GRAD0_opsz48.png" alt="add task">
+                    </span>
+                </button>
+            </div>
+        </div>
+        <div class="task-body">
+            <div class="task-list">
+                <div class="task-item" *ngFor="let task of this.TaskList.tasks">
+                    <app-task [Task]="task"></app-task>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <button type="button" class="btn btn-close" (click)="
+        ClearForm();
+        modal.dismiss();">
+        </button>
+    </div>
+    <div class="modal-body">
+        <form class="p-5" [formGroup]="TaskForm">
+            <fieldset class="form-group">
+                <label for="titulo" class="form-label"> Titulo </label>
+                <input type="text" class="form-control" id="titulo" formControlName="titulo">
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="descricao" class="form-label"> Descrição </label>
+                <input type="text" class="form-control" id="descricao" formControlName="descricao">
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="prioridade" class="form-label"> Prioridade </label>
+                <select class="form-select" formControlName="prioridade">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="duracao" class="form-label"> Duração </label>
+                <input type="datetime-local" class="form-control" id="duracao" formControlName="duracao">
+            </fieldset>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-custom" (click)="
+        CreateTask();
+        ClearForm();
+        modal.dismiss();">
+            criar task
+        </button>
+    </div>
+</ng-template>

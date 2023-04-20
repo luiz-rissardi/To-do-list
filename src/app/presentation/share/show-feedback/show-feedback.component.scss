@@ -1,0 +1,21 @@
+
+.feedback {
+    max-width: 300px;
+    position: fixed;
+    word-wrap: break-word;
+    padding: 20px;
+    right: 1%;
+    top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+
+    &-valid {
+        background-color: rgb(51, 168, 51);
+    }
+
+    &-invalid {
+        background-color: rgb(244, 91, 91);
+    }
+}

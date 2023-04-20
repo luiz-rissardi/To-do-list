@@ -1,0 +1,42 @@
+<section>
+    <div class="my-4 d-flex justify-content-end mx-5">
+        <button class="btn btn-custom" (click)="openModal(content)"> Add task list </button>
+    </div>
+    <nav class="nav-bar">
+        <ul class="nav-tabs List-menu">
+            <li class="nav-link d-flex List-item" *ngFor="let tasklist of this.lists" #item (click)="active(item)">
+                <app-task-list-option [TaskList]="tasklist"></app-task-list-option>
+                <button type="button" class="btn btn-close border-0 my-auto" (click)="DeleteTaskList(tasklist)"> </button>
+            </li>
+        </ul>
+    </nav>
+</section>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <button type="button" class="btn btn-close" (click)="
+        ClearForm();
+        modal.dismiss();">
+        </button>
+    </div>
+    <div class="model-body">
+        <form [formGroup]="FormTaskList">
+            <fieldset class="form-group w-75 my-5 m-auto">
+                <label for="titulo" class="form-label">Titulo</label>
+                <input type="text" id="titulo" class="form-control" formControlName="titulo" >
+            </fieldset>
+            <fieldset class="form-group my-5 w-75 m-auto">
+                <label for="descricao" class="form-label">Descrição</label>
+                <textarea type="text" id="descricao" class="form-control" formControlName="descricao" rows="10"></textarea>
+            </fieldset>
+            <fieldset class="my-5 d-flex justify-content-end ">
+                <button type="button" class="btn btn-primary mx-5" (click)="
+                 CreateList();
+                 ClearForm();
+                 modal.dismiss();">
+                    Enviar
+                </button>
+            </fieldset>
+        </form>
+    </div>
+</ng-template>

@@ -1,0 +1,55 @@
+.task{
+    &-card{
+        width: 400px;
+        border: 1px solid rgb(125, 125, 125);
+        border-radius: 5px;
+    }
+
+    &-header{
+        height: 25vh;
+        border-bottom: 1px solid rgb(125, 125, 125);
+        margin-top: 10px;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        overflow-y:scroll;
+        &-add{
+            position:sticky;
+            top: 10px;
+            left: 10px;
+        }
+    }
+
+    &-body{
+        width: 100%;
+        height: 300px;
+        padding: 5px;
+    }
+
+    &-item{
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        margin-top: 8px;
+        list-style: none;
+        border-radius: 8px;
+        color: white;
+        background-color: rgb(0, 40, 75);
+    }
+
+    &-list{
+        width: 100%;
+        height: 290px;
+        padding: 10px;
+        overflow-y: scroll;
+    }
+}
+
+.btn {
+    &-custom {
+        background-color: rebeccapurple;
+        color: white;
+        border-radius: 10px;
+        padding-inline: 30px;
+    }
+}

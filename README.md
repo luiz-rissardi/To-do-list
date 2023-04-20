@@ -25,3 +25,42 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+#### project
+
+é uma lista de coisas a fazer, 
+
+o usuario deverá poder cadastrar tarefas que seram feitas ao longo de um tempo determinado após o 
+tempo se esgotar a tarefa deverá ser apagada idenpedenetmente de as tarefas terem 
+sido concluidas
+
+estrutura de dados 
+
+
+## tarefa
+- descrição
+- titulo
+- prioridade
+- tempo de duração
+
+
+## lista de tarefas 
+- titulo
+- descrição 
+- tarefas 
+
+
+########### components
+
+ + lists
+    + create list
+  + remove list
+    
+
+ + task list
+    + create task 
+    + task
+        + remove task
+  
+

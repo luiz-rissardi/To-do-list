@@ -1,0 +1,25 @@
+@import "../../../styles/mixins.scss";
+
+
+
+.btn {
+    &-custom {
+        background-color: rebeccapurple;
+        color: white;
+        border-radius: 10px;
+        padding-inline: 30px;
+    }
+}
+
+.List {
+    &-menu {
+        width: 100%;
+        display: flex;
+        overflow: scroll;
+    }
+
+    &-item {
+        max-width: 220px;
+        max-height: 62px;
+    }
+}

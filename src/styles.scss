@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+p,h1,h2,h3,h4,h5,h6{
+    font-family: monospace;  
+    font-weight: 900;
+}
+
+::-webkit-scrollbar {
+    width: 5px;               /* width of the entire scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgb(80, 80, 80);        /* color of the tracking area */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(198 198 198);  /* color of the scroll thumb */
+    border-radius: 10px;       /* roundness of the scroll thumb */
+  }

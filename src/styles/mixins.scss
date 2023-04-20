@@ -1,0 +1,45 @@
+@import "./styles.scss";
+
+
+@mixin Breakpoint($point){
+    @if($point == sm-mobile-only){
+        @media screen and (max-width:$sm-mobile) {
+            @content;
+        }
+    }
+    @if($point == md-mobile-up){
+        @media screen and (min-width:$md-mobile) {
+            @content;
+        }
+    }
+    @if($point == lg-mobile-up){
+        @media screen and (min-width:$lg-mobile) {
+            @content;
+        }
+    }
+    @if($point == sm-tablet-up){
+        @media screen and (min-width:$sm-tablet) {
+            @content;
+        }
+    }
+    @if($point == md-tablet-up){
+        @media screen and (min-width:$md-tablet) {
+            @content;
+        }
+    }
+    @if($point == sm-deskTop-up){
+        @media screen and (min-width:$sm-deskTop) {
+            @content;
+        }
+    }
+    @if($point == md-deskTop-up){
+        @media screen and (min-width:$md-deskTop) {
+            @content;
+        }
+    }
+    @if($point == lg-deskTop-up){
+        @media screen and (min-width:$lg-deskTop) {
+            @content;
+        }
+    }
+}
