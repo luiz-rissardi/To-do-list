@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { ListsFacade } from 'src/app/abstraction/facades/Lists';
+
 import { TaskListModel } from 'src/app/core/model/TaskList';
 import { StateTaskList } from 'src/app/core/state/TaskList';
 
