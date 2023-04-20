@@ -25,10 +25,9 @@ export class SaveListsInStorage extends StorageService{
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' 
 })
 export class GetListsStorage extends StorageService {
-
   getListsStorage(): TaskListModel[] {
     try {
       return JSON.parse(localStorage.getItem(this.LOCAL_STORAGE_STRING) || "[]");

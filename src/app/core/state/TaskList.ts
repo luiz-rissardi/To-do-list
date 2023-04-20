@@ -25,16 +25,6 @@ export class StateTaskList {
         this.TaskList.tasks.push(task);
     }
 
-    removeTask(task: TaskModel) {
-        this.TaskList.tasks = this.TaskList.tasks
-            .filter((el: TaskModel) => {
-                if(el.id !== task.id) {
-                    return true;
-                } 
-                return false;
-            })
-    }
-
     private notifyAll(){
         this.ObservableTaskList.next(this.TaskList)
     }

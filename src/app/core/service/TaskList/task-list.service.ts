@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { TaskModel } from '../../model/Task';
 import { StateTaskList } from '../../state/TaskList';
 import { ValidationTaskService } from '../../validation/Task/valid-task.service';
+import { StateLists } from '../../state/Lists';
+import { TaskListModel } from '../../model/TaskList';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskListService {
   constructor(
+    private ListsState: StateLists,
     private taskListsState: StateTaskList,
     private TaskValidations: ValidationTaskService
   ) { }
@@ -19,15 +22,26 @@ export class TaskListService {
       if (duracaoInMiliseconds > 1) {
         this.taskListsState.addTask(task);
       } else {
-        throw new Error("Data de terminio invalida! Informe uma data a partir de hoje")
+        throw new Error("Data de terminio invalida! Informe uma data a partir de hoje");
       }
     } else {
-      throw new Error("Campos Não preenchidos")
+      throw new Error("Campos Não preenchidos");
     }
   }
 
   DeleteTask(task: TaskModel): void {
-    this.taskListsState.removeTask(task);
+    try {
+      const lists = this.ListsState.GetState();
+      const finalLists = lists.map((TaskList: TaskListModel) => {
+        TaskList.tasks = TaskList.tasks.filter(el => {
+          return el.id !== task.id
+        })
+        return TaskList
+      })
+      this.ListsState.SetState(finalLists);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   private GenerateId(): string {

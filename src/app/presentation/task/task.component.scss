@@ -1,4 +1,6 @@
-.prioridade-icon{
+@import "../../../styles/styles.scss";
+
+.prioridade-icon {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -9,4 +11,37 @@
     color: rgb(0, 0, 0);
     margin: auto;
     margin-top: 20px;
+    margin-left: 23px;
+}
+
+.check-icon {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.text-task {
+    width: auto;
+    display: flex;
+    word-wrap: break-word;
+}
+
+.task {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    margin-top: 8px;
+    list-style: none;
+    border-radius: 8px;
+}
+
+.complete {
+    background-color: $Complete;
+    color: black;
+}
+
+.notComplete {
+    background-color: $NotComplete;
+    color: white;
+
 }

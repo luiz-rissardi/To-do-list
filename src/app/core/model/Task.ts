@@ -8,6 +8,7 @@ export class TaskModel{
     duracao:string;
     duracaoInMiliseconds:number;
     id:string;
+    complete:boolean;
 
     constructor(titulo:string,descricao:string,prioridade:number,duracaoInMiliseconds:number,duracao:string,id:string){
         this.titulo = titulo;
@@ -16,5 +17,6 @@ export class TaskModel{
         this.duracaoInMiliseconds = duracaoInMiliseconds;
         this.prioridade = prioridade;
         this.id = id;
+        this.complete = false;
     }
 }

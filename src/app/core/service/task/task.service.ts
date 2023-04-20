@@ -1,40 +1,50 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
+
 import { StateLists } from '../../state/Lists';
 import { TaskListModel } from '../../model/TaskList';
 import { TaskModel } from '../../model/Task';
-import { StateTaskList } from '../../state/TaskList';
-import { SaveListsInStorage } from '../storage/storage.service';
+import { TaskListService } from '../TaskList/task-list.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
-  private TaskLists: TaskListModel[] = [];
   constructor(
     private ListsState: StateLists,
-    private SaveStorage:SaveListsInStorage
+    private TaskListService:TaskListService
   ) { }
 
-  TimerToRemoveTask() {
-    this.TaskLists = this.ListsState.GetState();
-    this.TaskLists.forEach((tasklist: TaskListModel) => {
+  StartTimerToRemoveTask() {
+    const  TaskLists = this.ListsState.GetState();
+    TaskLists.forEach((tasklist: TaskListModel) => {
       tasklist.tasks.forEach((task: TaskModel) => {
-        setTimeout(() => {
-          this.RemoveTask(task)
-        }, task.duracaoInMiliseconds);
+        this.StartTimerTask(task)
       })
     })
   }
 
-  private RemoveTask(task: TaskModel) {
-    const lists = this.ListsState.GetState()
-      .map((TaskList: TaskListModel) => {
-        TaskList.tasks = TaskList.tasks.filter(el => {
-          return el.id !== task.id
-        })
-        return TaskList
+  toogleComplete(task:TaskModel){
+    const TaskLists = this.ListsState.GetState();
+    TaskLists.forEach((tasklist: TaskListModel) => {
+      tasklist.tasks.forEach((el: TaskModel) => {
+        if(el.id === task.id){
+          el.complete = !el.complete;
+        }
       })
-      this.ListsState.SetState(lists);
-      this.SaveStorage.saveListsInStorage(lists)
+    })
+  }
+
+  private taskTimeHasAlreadyExpired(task:TaskModel){
+    return new Date(task.duracao).getTime() < Date.now()
+  }
+
+  private StartTimerTask(task:TaskModel){
+    if(this.taskTimeHasAlreadyExpired(task)){
+      this.TaskListService.DeleteTask(task)
+    }else{
+      setTimeout(() => {
+        this.TaskListService.DeleteTask(task)
+      }, new Date(task.duracao).getTime() - Date.now());
+    }
   }
 }

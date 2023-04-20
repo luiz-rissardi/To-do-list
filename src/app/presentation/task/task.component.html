@@ -1,8 +1,8 @@
-<div class="task w-100 d-flex justify-content-between">
-    <div>
+<div class="task w-100 d-flex justify-content-between" [ngStyle]="this.Task.complete ? {color:'black', background:'rgb(37, 224, 99)'}:{background:'rgb(204, 5, 51)',color:'white'}" #taskItem>
+    <div (click)="toggleComplete(taskItem)">
         <h5> {{ this.Task.titulo }} </h5>
-        <h6 class="text-muted">{{ this.Task.descricao }}</h6>
-        <span class="align-center"> expira em : {{ this.Task.duracao | date:"dd/MM/YYYY / hh:mm" }} </span>
+        <h6 class="text-muted task-text">{{ this.Task.descricao }}</h6>
+        <span class="align-center"> expira em : {{ this.Task.duracao | date:"dd/MM/YYYY / hh:mm a" }} </span>
     </div>
     <div>
         <button class="btn" (click)="RemoveTask(this.Task)">
@@ -12,5 +12,15 @@
         </button>
         <br>
         <span class="prioridade-icon"> {{ this.Task.prioridade }} </span>
+        <div *ngIf="this.Task.complete == true; else Completed">
+            <span class="check-icon">
+                <img src="../../../assets/images/Check.png" alt="completed task">
+            </span>
+        </div>
+        <ng-template #Completed >
+            <span class="check-icon">
+                <img src="../../../assets/images/NotCheck.png" alt="completed task">
+            </span>
+        </ng-template>
     </div>
 </div>
