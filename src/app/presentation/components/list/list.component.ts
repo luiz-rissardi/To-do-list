@@ -1,10 +1,11 @@
-import { Component, ElementRef, OnInit, QueryList, Renderer2, TemplateRef, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, TemplateRef, ViewChildren } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { TaskListModel } from 'src/app/core/model/TaskList';
 import { StateLists } from 'src/app/core/state/Lists';
 import { ListsFacade } from 'src/app/abstraction/facades/Lists';
+import { StateTaskList } from 'src/app/core/state/TaskList';
 
 
 @Component({
@@ -20,18 +21,18 @@ export class ListComponent implements OnInit {
   constructor(
     private taskListFacade: ListsFacade,
     private listsState: StateLists,
+    private TastListState:StateTaskList,
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
-    private dom:Renderer2
   ) {
   }
+
   ngOnInit(): void {
     this.FormTaskList = this.formBuilder.group({
       titulo: [],
       descricao: [],
     });
 
-    this.taskListFacade.StartStatement();
     this.listsState.ListenStateAllLists()
       .subscribe((lists: TaskListModel[]) => {
         this.lists = lists;
@@ -62,5 +63,6 @@ export class ListComponent implements OnInit {
 
   DeleteTaskList(list: TaskListModel): void {
     this.taskListFacade.RemoveTaskList(list);
+    this.TastListState.SetState(new TaskListModel("","",""));
   }
 }

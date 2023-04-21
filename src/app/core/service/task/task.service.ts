@@ -4,6 +4,7 @@ import { StateLists } from '../../state/Lists';
 import { TaskListModel } from '../../model/TaskList';
 import { TaskModel } from '../../model/Task';
 import { TaskListService } from '../TaskList/task-list.service';
+import { ValidationTaskService } from '../../validation/Task/valid-task.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { TaskListService } from '../TaskList/task-list.service';
 export class TaskService {
   constructor(
     private ListsState: StateLists,
+    private TaskValidation:ValidationTaskService,
     private TaskListService:TaskListService
   ) { }
 
@@ -34,16 +36,12 @@ export class TaskService {
     })
   }
 
-  private taskTimeHasAlreadyExpired(task:TaskModel){
-    return new Date(task.duracao).getTime() < Date.now()
-  }
-
   private StartTimerTask(task:TaskModel){
-    if(this.taskTimeHasAlreadyExpired(task)){
-      this.TaskListService.DeleteTask(task)
+    if(this.TaskValidation.taskTimeHasAlreadyExpired(task)){
+      this.TaskListService.DeleteTask(task);
     }else{
       setTimeout(() => {
-        this.TaskListService.DeleteTask(task)
+        this.TaskListService.DeleteTask(task);
       }, new Date(task.duracao).getTime() - Date.now());
     }
   }

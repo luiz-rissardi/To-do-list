@@ -3,18 +3,16 @@ import { Injectable } from '@angular/core';
 import { TaskListModel } from 'src/app/core/model/TaskList';
 import { StateLists } from '../../state/Lists';
 import { ValidationTaskListService } from '../../validation/TaskList/valid-task-list.service';
-import { StateTaskList } from '../../state/TaskList';
-
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListService {
+  private listsBeforeFilter: TaskListModel[] = [];
 
   constructor(
     private ListsState: StateLists,
-    private TaskListState:StateTaskList,
     private TaskListValidations: ValidationTaskListService
   ) { }
 
@@ -27,26 +25,29 @@ export class ListService {
     }
   }
 
-  RemoveTaskList(list: TaskListModel):void {
+  DeleteTaskList(list: TaskListModel): void {
     try {
-      let data: TaskListModel[] = [];
       this.ListsState.ListenStateAllLists()
-        .subscribe(lists => {
-          data = lists.filter((el: any) => {
-            if (el.id === list.id) {
-              return false
-            }
-            return true
-          })
-        }).unsubscribe();
-      this.ListsState.SetState(data);
-      this.TaskListState.SetState(new TaskListModel("","",""));
+        .subscribe(this.filterLists(list))
+        .unsubscribe();
+      this.ListsState.SetState(this.listsBeforeFilter);
     } catch (error) {
       throw new Error("Error ao Excluir lista de tarefas")
     }
   }
 
-  private GenerateId():string{
+  private filterLists(taskListParam: TaskListModel) {
+    return (lists: TaskListModel[]) => {
+      this.listsBeforeFilter = lists.filter((el: any) => {
+        if (el.id === taskListParam.id) {
+          return false
+        }
+        return true
+      });
+    }
+  }
+
+  private GenerateId(): string {
     return String(Math.floor(Math.random() * 99999999 + 1));
   }
 }

@@ -14,4 +14,8 @@ export class ValidationTaskService {
     }    
     return false
   }
+
+  taskTimeHasAlreadyExpired(task:TaskModel){
+    return new Date(task.duracao).getTime() < Date.now();
+  }
 }

@@ -1,6 +1,6 @@
 import { Component, Inject, ViewChild } from '@angular/core';
 import { WarningHandlerFacade } from 'src/app/abstraction/facades/HandlerWarning';
-import { listen } from 'src/app/abstraction/facades/interfaces/listen';
+import { listen } from 'src/app/abstraction/interfaces/listen';
 
 @Component({
   selector: 'app-show-feedback',

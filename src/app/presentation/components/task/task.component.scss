@@ -1,4 +1,4 @@
-@import "../../../styles/styles.scss";
+@import "../../../../styles/styles.scss";
 
 .prioridade-icon {
     width: 30px;
@@ -11,10 +11,10 @@
     color: rgb(0, 0, 0);
     margin: auto;
     margin-top: 20px;
-    margin-left: 23px;
 }
 
-.check-icon {
+.check-icon{
+    font-size: 20px;
     display: flex;
     justify-content: center;
     margin-top: 20px;

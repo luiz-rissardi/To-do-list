@@ -2,25 +2,21 @@
     <div (click)="toggleComplete(taskItem)">
         <h5> {{ this.Task.titulo }} </h5>
         <h6 class="text-muted task-text">{{ this.Task.descricao }}</h6>
+        <i class="fi fi-rr-alarm-clock"></i>
+        <br>
         <span class="align-center"> expira em : {{ this.Task.duracao | date:"dd/MM/YYYY / hh:mm a" }} </span>
     </div>
     <div>
-        <button class="btn" (click)="RemoveTask(this.Task)">
-            <span>
-                <img src="../../../assets/images/delete_FILL0_wght400_GRAD0_opsz48.png" alt="delete task">
-            </span>
+        <button class="btn border border-rounded"  (click)="RemoveTask(this.Task)">
+            <i class="fi fi-rr-trash"></i>
         </button>
         <br>
         <span class="prioridade-icon"> {{ this.Task.prioridade }} </span>
         <div *ngIf="this.Task.complete == true; else Completed">
-            <span class="check-icon">
-                <img src="../../../assets/images/Check.png" alt="completed task">
-            </span>
+            <span class="check-icon fi fi-rr-checkbox"> </span>
         </div>
         <ng-template #Completed >
-            <span class="check-icon">
-                <img src="../../../assets/images/NotCheck.png" alt="completed task">
-            </span>
+            <span class="check-icon fi fi-rr-square"> </span>
         </ng-template>
     </div>
 </div>

@@ -2,7 +2,7 @@
 import { Inject, Injectable } from "@angular/core";
 import { WarningHandlerService } from "src/app/core/service/handlerWarning/handler-warning.service";
 import { TaskService } from "src/app/core/service/task/task.service";
-import { handler } from "./interfaces/handler";
+import { handler } from "../interfaces/handler";
 import { TaskListModel } from "src/app/core/model/TaskList";
 import { StateLists } from "src/app/core/state/Lists";
 import { SaveListsInStorage } from "src/app/core/service/storage/storage.service";

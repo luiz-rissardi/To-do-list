@@ -2,10 +2,8 @@ import { Injectable } from '@angular/core';
 import { TaskListModel } from '../../model/TaskList';
 
 
-@Injectable({
-  providedIn: 'root'
-})
-export class StorageService {
+
+class StorageService {
   protected LOCAL_STORAGE_STRING = "local";
   constructor() {
   }

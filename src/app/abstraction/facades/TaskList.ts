@@ -3,7 +3,7 @@ import { Inject, Injectable } from "@angular/core";
 import { TaskModel } from "src/app/core/model/Task";
 import { TaskListService } from "src/app/core/service/TaskList/task-list.service";
 import { WarningHandlerService } from "src/app/core/service/handlerWarning/handler-warning.service";
-import { handler } from "./interfaces/handler";
+import { handler } from "../interfaces/handler";
 import { SaveListsInStorage } from "src/app/core/service/storage/storage.service";
 import { StateLists } from "src/app/core/state/Lists";
 import { TaskListModel } from "src/app/core/model/TaskList";
