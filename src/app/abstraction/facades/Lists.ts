@@ -7,7 +7,6 @@ import { StateLists } from "../../core/state/Lists";
 import { WarningHandlerService } from "../../core/service/handlerWarning/handler-warning.service";
 import { handler } from "../interfaces/handler";
 
-
 @Injectable({
     providedIn: "root"
 })
