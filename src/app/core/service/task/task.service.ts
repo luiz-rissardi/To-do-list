@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { StateLists } from '../../state/Lists';
 import { TaskListModel } from '../../model/TaskList';
 import { TaskModel } from '../../model/Task';
-import { TaskListService } from '../taskList/task-list.service';
+import { TaskListService } from 'src/app/core/service/taskList/task-list.service';
 import { ValidationTaskService } from '../../validation/Task/valid-task.service';
 import { NotificationService } from '../notification/notification.service';
 
