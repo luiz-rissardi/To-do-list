@@ -14,12 +14,20 @@
 .List {
     &-menu {
         width: 100%;
+        padding: 5px;
         display: flex;
-        overflow: scroll;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        background-color: aliceblue;
     }
 
     &-item {
-        max-width: 220px;
+        min-width: 220px;
+        justify-content: center;
         max-height: 62px;
     }
+}
+
+.active{
+    border: 1px solid green !important;
 }

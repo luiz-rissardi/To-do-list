@@ -3,8 +3,10 @@ import { Injectable } from '@angular/core';
 import { StateLists } from '../../state/Lists';
 import { TaskListModel } from '../../model/TaskList';
 import { TaskModel } from '../../model/Task';
-import { TaskListService } from '../TaskList/task-list.service';
+import { TaskListService } from '../taskList/task-list.service';
 import { ValidationTaskService } from '../../validation/Task/valid-task.service';
+import { NotificationService } from '../notification/notification.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,8 @@ export class TaskService {
   constructor(
     private ListsState: StateLists,
     private TaskValidation:ValidationTaskService,
-    private TaskListService:TaskListService
+    private TaskListService:TaskListService,
+    private NotificationService:NotificationService
   ) { }
 
   StartTimerToRemoveTask() {
@@ -41,6 +44,7 @@ export class TaskService {
       this.TaskListService.DeleteTask(task);
     }else{
       setTimeout(() => {
+        this.NotificationService.NotifyTaskExpired(task);
         this.TaskListService.DeleteTask(task);
       }, new Date(task.duracao).getTime() - Date.now());
     }

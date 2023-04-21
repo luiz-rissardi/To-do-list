@@ -1,12 +1,12 @@
-<section class="d-flex" style="height: 60vh; margin:20px; margin-bottom: 100px;">
+<section class="d-flex" style="height:70vh; padding:20px; background: rgb(1, 11, 61);">
     <div class="task-card m-auto"*ngIf="this.TaskList !== undefined && this.TaskList?.titulo !== '' ">
         <div class="task-header">
             <div>
                 <h1> {{ this.TaskList.titulo }} </h1>
-                <span class="text-muted"> {{this.TaskList.descricao}} </span>
+                <span> {{this.TaskList.descricao}} </span>
             </div>
             <div class="task-header-add">
-                <button class="btn opacity-25" (click)="openModal(content)">
+                <button class="btn" (click)="openModal(content)">
                     <span class="fi fi-rr-add" style="font-size: 50px;"> </span>
                 </button>
             </div>

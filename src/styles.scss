@@ -2,7 +2,7 @@
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
-
+@import "./styles/mixins.scss";
 
 *{
     padding: 0;
@@ -16,7 +16,10 @@ p,h1,h2,h3,h4,h5,h6{
 }
 
 ::-webkit-scrollbar {
-    width: 5px;               /* width of the entire scrollbar */
+    /* width of the entire scrollbar */
+    @include Breakpoint(md-mobile-up){
+      width: 1px !important;
+    }
   }
   
   ::-webkit-scrollbar-track {

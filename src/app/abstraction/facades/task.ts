@@ -7,7 +7,6 @@ import { TaskListModel } from "src/app/core/model/TaskList";
 import { StateLists } from "src/app/core/state/Lists";
 import { SaveListsInStorage } from "src/app/core/service/storage/storage.service";
 import { TaskModel } from "src/app/core/model/Task";
-import { TaskListService } from "src/app/core/service/TaskList/task-list.service";
 
 
 @Injectable({

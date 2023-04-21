@@ -4,8 +4,8 @@
     </div>
     <nav class="nav-bar">
         <ul class="nav-tabs List-menu">
-            <li class="nav-link d-flex List-item" *ngFor="let tasklist of this.lists" #item (click)="active(item)">
-                <app-task-list-option [TaskList]="tasklist"></app-task-list-option>
+            <li class="nav-link d-flex List-item p-1" *ngFor="let tasklist of this.lists" #item (click)="active(item)">
+                <app-task-list-option class="m-auto" [TaskList]="tasklist"></app-task-list-option>
                 <button type="button" class="btn btn-close border-0 my-auto" (click)="DeleteTaskList(tasklist)"> </button>
             </li>
         </ul>
