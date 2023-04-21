@@ -1,10 +1,10 @@
 import { Inject, Injectable } from "@angular/core";
 
-import { TaskListModel } from "src/app/core/model/TaskList";
-import { ListService } from "src/app/core/service/lists/lists-service.service";
-import { GetListsStorage, SaveListsInStorage } from "src/app/core/service/storage/storage.service";
-import { StateLists } from "src/app/core/state/Lists";
-import { WarningHandlerService } from "src/app/core/service/handlerWarning/handler-warning.service";
+import { TaskListModel } from "../../core/model/TaskList";
+import { ListService } from "../../core/service/lists/lists-service.service";
+import { GetListsStorage, SaveListsInStorage } from "../../core/service/storage/storage.service";
+import { StateLists } from "../../core/state/Lists";
+import { WarningHandlerService } from "../../core/service/handlerWarning/handler-warning.service";
 import { handler } from "../interfaces/handler";
 
 

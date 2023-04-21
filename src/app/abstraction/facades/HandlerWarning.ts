@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { WarningHandlerService } from "src/app/core/service/handlerWarning/handler-warning.service";
+import { WarningHandlerService } from "../../core/service/handlerWarning/handler-warning.service";
 import { handler } from "../interfaces/handler";
 import { listen } from "../interfaces/listen";
 import { Subject } from "rxjs";
