@@ -14,7 +14,6 @@ import { TaskListOptionComponent } from './presentation/components/task-list-opt
 import { TaskListComponent } from './presentation/components/task-list/task-list.component';
 import { FooterComponent } from './presentation/share/footer/footer.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
