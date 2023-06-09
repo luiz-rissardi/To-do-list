@@ -12,7 +12,7 @@ import { handler } from "../interfaces/handler";
 })
 export class ListsFacade{
     constructor(
-        private ListsService: ListService,
+        @Inject("") private ListsService: ListService,
         private GetStorage: GetListsStorage,
         private SaveStorage: SaveListsInStorage,
         private ListsState: StateLists,

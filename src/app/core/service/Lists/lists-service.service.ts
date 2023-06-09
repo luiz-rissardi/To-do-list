@@ -9,8 +9,6 @@ import { ValidationTaskListService } from '../../validation/TaskList/valid-task-
   providedIn: 'root'
 })
 export class ListService {
-  private listsBeforeFilter: TaskListModel[] = [];
-
   constructor(
     private ListsState: StateLists,
     private TaskListValidations: ValidationTaskListService
