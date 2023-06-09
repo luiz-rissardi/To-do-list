@@ -14,8 +14,11 @@ export class NotificationService {
   ) { }
 
   async NotifyTaskExpired(task:TaskModel){
-    await this.SOUND_NOTIFICATION.play();
-    this.WarningHandler.ReportSucess(`A task ${task.titulo} expirou !`);
+    try {
+      await this.SOUND_NOTIFICATION.play();
+      this.WarningHandler.ReportSucess(`A task ${task.titulo} expirou !`);
+    } catch (error:any) {
+      this.WarningHandler.ReportError(error.message)
+    }
   }
-
 }

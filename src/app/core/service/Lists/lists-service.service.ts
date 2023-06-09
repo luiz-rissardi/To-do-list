@@ -27,23 +27,9 @@ export class ListService {
 
   DeleteTaskList(list: TaskListModel): void {
     try {
-      this.ListsState.ListenStateAllLists()
-        .subscribe(this.filterLists(list))
-        .unsubscribe();
-      this.ListsState.SetState(this.listsBeforeFilter);
+      this.ListsState.RemoveList(list);      
     } catch (error) {
       throw new Error("Error ao Excluir lista de tarefas")
-    }
-  }
-
-  private filterLists(taskListParam: TaskListModel) {
-    return (lists: TaskListModel[]) => {
-      this.listsBeforeFilter = lists.filter((el: any) => {
-        if (el.id === taskListParam.id) {
-          return false
-        }
-        return true
-      });
     }
   }
 

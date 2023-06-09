@@ -1,7 +1,7 @@
 import { Inject, Injectable } from "@angular/core";
 
 import { TaskListModel } from "../../core/model/TaskList";
-import { ListService } from "../../core/service/Lists/lists-service.service";
+import { ListService } from "../../core/service/lists/lists-service.service";
 import { GetListsStorage, SaveListsInStorage } from "../../core/service/storage/storage.service";
 import { StateLists } from "../../core/state/Lists";
 import { WarningHandlerService } from "../../core/service/handlerWarning/handler-warning.service";
@@ -11,7 +11,6 @@ import { handler } from "../interfaces/handler";
     providedIn: "root"
 })
 export class ListsFacade{
-    private lists!: TaskListModel[];
     constructor(
         private ListsService: ListService,
         private GetStorage: GetListsStorage,
@@ -25,7 +24,7 @@ export class ListsFacade{
     CreateList(titulo: string, descricao: string): void {
         try {
             this.ListsService.CreateTaskList(titulo, descricao);
-            this.SaveStorage.saveListsInStorage(this.lists);
+            this.SaveStorage.saveListsInStorage(this.ListsState.GetState());
             this.WarningHandler.ReportSucess("Dados Salvos com sucesso!");
         } catch (error: any) {
             this.WarningHandler.ReportError(error.message)
@@ -35,7 +34,7 @@ export class ListsFacade{
     RemoveTaskList(list: TaskListModel): void {
         try {
             this.ListsService.DeleteTaskList(list);
-            this.SaveStorage.saveListsInStorage(this.lists);
+            this.SaveStorage.saveListsInStorage(this.ListsState.GetState());
             this.WarningHandler.ReportSucess("Lista Removida com sucesso");
         } catch (error: any) {
             this.WarningHandler.ReportError(error.message)
@@ -44,13 +43,8 @@ export class ListsFacade{
 
     private StartStatement(): void {
         try {
-            this.lists = this.GetStorage.getListsStorage();
-            this.ListsState.SetState(this.lists);
-
-            this.ListsState.ListenStateAllLists()
-            .subscribe((lists: TaskListModel[]) => {
-                this.lists = lists
-            })
+            const lists = this.GetStorage.getListsStorage();
+            lists.forEach(el => this.ListsState.AddList(el))
         } catch (error: any) {
             this.WarningHandler.ReportError(error.message)
         }

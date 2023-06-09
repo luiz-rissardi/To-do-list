@@ -1,6 +1,6 @@
 import { Component, Inject, ViewChild } from '@angular/core';
-import { WarningHandlerFacade } from 'src/app/abstraction/facades/HandlerWarning';
 import { listen } from 'src/app/abstraction/interfaces/listen';
+import { WarningHandlerService } from 'src/app/core/service/handlerWarning/handler-warning.service';
 
 @Component({
   selector: 'app-show-feedback',
@@ -12,13 +12,12 @@ export class ShowFeedbackComponent {
   @ViewChild("feedback") private feedback!: any;
 
   constructor(
-    @Inject(WarningHandlerFacade) private listenHandlerWarning: listen,
+    @Inject(WarningHandlerService) private listenHandlerWarning: listen,
   ) {
     this.ListenHandler();
   }
 
   private ListenHandler() {
-    try {
       this.listenHandlerWarning.ListenFeedBack()
         .subscribe(data => {
           const { typeFeedback, message } = JSON.parse(data);
@@ -26,9 +25,6 @@ export class ShowFeedbackComponent {
           this.MessageInfo = message;
           this.ShowToast(2500, typeFeedback);
         })
-    } catch (error) {
-      console.log(error);
-    }
   }
 
   private ShowToast(timer: number, type: string) {

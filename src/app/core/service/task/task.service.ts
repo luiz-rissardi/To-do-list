@@ -15,8 +15,8 @@ export class TaskService {
   constructor(
     private ListsState: StateLists,
     private TaskValidation:ValidationTaskService,
-    private TaskListService:TaskListService,
-    private NotificationService:NotificationService
+    private NotificationService:NotificationService,
+    private TaskListService:TaskListService
   ) { }
 
   StartTimerToRemoveTask() {

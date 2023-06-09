@@ -1,17 +1,14 @@
-import { Injectable } from '@angular/core';
+
 import { TaskListModel } from '../../model/TaskList';
 
 
 
-class StorageService {
+export class StorageService {
   protected LOCAL_STORAGE_STRING = "local";
   constructor() {
   }
 }
 
-@Injectable({
-  providedIn: 'root'
-})
 export class SaveListsInStorage extends StorageService{
   saveListsInStorage(lists: TaskListModel[]): void {
     try {
@@ -22,9 +19,7 @@ export class SaveListsInStorage extends StorageService{
   }
 }
 
-@Injectable({
-  providedIn: 'root' 
-})
+
 export class GetListsStorage extends StorageService {
   getListsStorage(): TaskListModel[] {
     try {

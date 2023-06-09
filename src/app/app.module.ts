@@ -13,6 +13,7 @@ import { ShowFeedbackComponent } from './presentation/share/show-feedback/show-f
 import { TaskListOptionComponent } from './presentation/components/task-list-option/task-list-option.component';
 import { TaskListComponent } from './presentation/components/task-list/task-list.component';
 import { FooterComponent } from './presentation/share/footer/footer.component';
+import { GetListsStorage, SaveListsInStorage } from './core/service/storage/storage.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { FooterComponent } from './presentation/share/footer/footer.component';
     NgbModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [GetListsStorage, SaveListsInStorage],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

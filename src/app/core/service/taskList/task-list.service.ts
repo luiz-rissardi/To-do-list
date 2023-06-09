@@ -38,7 +38,7 @@ export class TaskListService {
         })
         return TaskList
       })
-      this.ListsState.SetState(finalLists);
+      finalLists.forEach(el => this.ListsState.AddList(el))
     } catch (error) {
       console.error(error);
     }
